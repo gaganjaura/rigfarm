@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">reorder</i>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">My Funds</h4>
+                            <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Hash Power(MH/s)</th>
+                                        <th>Total Coins Earned(ETH)</th>
+                                        <th>Coin Balance(ETH)</th>
+                                        <th>Balance Amount(Dollars)</th>
+                                        <th>Total Earned(Dollars)</th>
+                                        <th></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>{{fund.hash_amount/1000000}}</td>
+                                        <td>{{fund.total_earned * 1 |  number : '1.2-6'}}</td>
+                                        <td>{{fund.coin_balance * -1 |  number : '1.2-6'}}</td>
+                                        <td>$ {{fund.coin_balance * 13.33 |  number : '1.2-6'}}</td>
+                                        <td>$ {{fund.earned_amount * 1  |  number : '1.2-6'}}</td>
+                                        <td><button type="submit" class="btn btn-fill btn-rose" (click)="viewDetails(transactionDetails)">{{detailsButtonText}}</button></td>
+                                      </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                        
+                </div>
+                <div *ngIf="transactionDetails">
+                <div class="card">
+                        <div class="card-header card-header-icon" data-background-color="rose">
+                            <i class="material-icons">reorder</i>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Statement Detail</h4>
+                            <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Date</th>
+                                        <th>Coins Credited/Debited</th>
+                                        <th>Hash Power (MHs)</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr  *ngFor="let transact of transactions | async">
+                                            <td>{{transact.date | date:'dd-MM-yyyy'}}</td>
+                                            <td>{{transact.coins_conduct |  number : '1.2-6'}}</td>
+                                            <td>{{fund.hash_amount/1000000}}</td>
+                                          </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                     </div>
+                <div class="row">
+                    <div class="col-sm-8"></div>
+                    <div class="col-sm-4" style="margin-left: 82.6%;"><button type="submit" class="btn btn-fill btn-rose" [disabled]="!transactions.length>0" (click)="openDialog()">Cash Out</button></div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

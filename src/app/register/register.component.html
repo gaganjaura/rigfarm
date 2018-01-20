@@ -1,0 +1,114 @@
+<div class="full-page register-page" filter-color="black">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="card card-signup">
+                    <h2 class="card-title text-center">Register</h2>
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="card-content">
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-rose">
+                                        <i class="material-icons">attach_money</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Cryptocurrency</h4>
+                                        <p class="description">
+                                            Cryptocurrency is a medium of exchange,created and stored electronically in blockchain, using encryption techniques to control
+                                            the creation of monetary units and to verify the transfer of funds.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-primary">
+                                        <i class="material-icons">account_balance_wallet</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Accounts</h4>
+                                        <p class="description">
+                                            Buy and Sell instantly with your bank account or credit card.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="info info-horizontal">
+                                    <div class="icon icon-info">
+                                        <i class="material-icons">send</i>
+                                    </div>
+                                    <div class="description">
+                                        <h4 class="info-title">Payment</h4>
+                                        <p class="description">
+                                            Easily send and receive your digital assets.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <!-- <form class="form" method="" action=""> -->
+                                    <form #registerFrom="ngForm" novalidate (ngSubmit)="register(loginForm)">
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="material-icons">face</i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="First Name..." required  #userName="ngModel" name="userName" [(ngModel)]="model.first_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Last Name..." name="lastname" required  #lastname="ngModel" [(ngModel)]="model.last_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">email</i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Email..." name="email" required 
+                                        pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" #email="ngModel" [(ngModel)]="model.email">
+                                        <small [hidden]="email.valid || (email.pristine && !registerFrom.submitted)" class="text-danger">
+                                                Email is required and format should be <i>john@doe.com</i>.
+                                              </small>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">phone</i>
+                                        </span>
+                                        <input type="number" class="form-control" placeholder="Contact..." name="contact" required  #contact="ngModel" [(ngModel)]="model.contact">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                        <input type="password" placeholder="Password..." class="form-control" name="password" required  #password="ngModel" [(ngModel)]="model.password" />
+                                    </div>
+                                    <!-- If you want to add a checkbox to this form, uncomment this code -->
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"  name="check"  [(ngModel)]="model.terms"  ngModel > I agree to the
+                                            <a href="#something">terms and conditions</a>.                                           
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="footer text-center">
+                                    <button type="submit" class="btn btn-primary btn-round" [disabled]="!registerFrom.valid || !model.terms " >Get Started</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright pull-right">
+                &copy; {{test | date: 'yyyy'}}
+                <a href="https://www.creative-tim.com">Gritsa Technologies</a>
+            </p>
+        </div>
+    </footer>
+    <div class="full-page-background" style="background-image: url(../../../assets/img/register.jpeg) "></div>
+</div>

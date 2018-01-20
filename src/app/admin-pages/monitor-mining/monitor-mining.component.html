@@ -1,0 +1,149 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">weekend</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">MH/s</p>
+                        <h3 class="card-title">184</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="red">
+                        <i class="material-icons">equalizer</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">ETH</p>
+                        <h3 class="card-title">75.521</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">favorite</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Health</p>
+                        <h3 class="card-title">$3,245</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Temperature</p>
+                        <h3 class="card-title">+245</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> Just Updated
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">weekend</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Temperature</p>
+                        <h3 class="card-title">184<sup>o</sup>C</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="red">
+                        <i class="material-icons">power</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Power</p>
+                        <h3 class="card-title">75.521</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">access_time</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Last Mined</p>
+                        <h3 class="card-title">4 sec</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Followers</p>
+                        <h3 class="card-title">+245</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> Just Updated
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">desktop_mac</i>
+                </div>
+                <div class="card-content table-full-width">
+                    <h4 class="card-title">Miner Details</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                  <th *ngFor="let cell of tableData3.headerRow">{{ cell }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                  <tr class="success">
+                                      <td *ngFor="let cell of tableData3.dataRows[0]">{{cell}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td *ngFor="let cell of tableData3.dataRows[1]">{{cell}}</td>
+                                  </tr>
+                                  <tr class="info">
+                                      <td *ngFor="let cell of tableData3.dataRows[2]">{{cell}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td *ngFor="let cell of tableData3.dataRows[3]">{{cell}}</td>
+                                  </tr>
+                                  <tr class="danger">
+                                      <td *ngFor="let cell of tableData3.dataRows[4]">{{cell}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td *ngFor="let cell of tableData3.dataRows[5]">{{cell}}</td>
+                                  </tr>
+                                  <tr class="warning">
+                                      <td *ngFor="let cell of tableData3.dataRows[6]">{{cell}}</td>
+                                  </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

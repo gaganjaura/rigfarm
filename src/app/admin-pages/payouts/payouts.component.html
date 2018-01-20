@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="red">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">My Payouts</h4>
+                        <div class="content table-responsive">
+                          <table class="table">
+                                  <thead class="text-danger">
+                                      <tr>
+                                        <th *ngFor="let cell of tableData.headerRow">{{ cell }}</th>
+                                      </tr>
+                                  </thead>
+                                <tbody>
+                                    <!-- <tr *ngFor="let row of tableData.dataRows">
+                                        <td>{{row[0]}}</td>
+                                        <td>{{row[1]}}</td>
+                                        <td>{{row[2]}}</td>
+                                        <td class="text-primary">{{row[3]}}</td>
+                                    </tr> -->
+                                    <tr  *ngFor="let payout of payouts">
+                                            <td>{{payout.date | date:'dd-MM-yyyy'}}</td>
+                                            <td>{{payout.coins_conduct * -1}}</td>
+                                            <td>$ {{payout.coins_amount | number : '1.2-6'}}</td>
+                                          </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >Total</th>
+                                        <th>{{totalOfETHAmount * -1 | number : '1.2-6'}}</th>                                    
+                                        <th>$ {{totalAmountEarned | number : '1.2-6'}}</th>
+                                    </tr>
+                                </tfoot>
+                          </table>
+
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-chart" >
+                    <div class="card-header" data-background-color="green">
+                        <div class="ct-chart" id="ethPayoutsChart"></div>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Graphical View of Payouts in ETH</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card card-chart" >
+                    <div class="card-header" data-background-color="orange">
+                        <div class="ct-chart" id="usdPayoutsChart"></div>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Graphical View of Payouts in USD</h4>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

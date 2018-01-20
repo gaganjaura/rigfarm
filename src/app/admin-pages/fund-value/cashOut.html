@@ -1,0 +1,50 @@
+<div md-dialog-content>
+  <form method="#" action="#">
+    <div class="card card-login card-hidden">
+
+      <div class="card-content">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="material-icons">monetization_on</i>
+          </span>
+          <div class="form-group label-floating">
+            <label class="control-label">Coins to be Cashed</label>
+            <!-- <md-form-field> -->
+
+            <input type="number" class="form-control" name="coins" [(ngModel)]="data.payOut.coins_conduct">
+            <!-- </md-form-field> -->
+          </div>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="material-icons">monetization_on</i>
+          </span>
+          <div class="form-group label-floating">
+            <label class="control-label">Current ETH Value</label>
+            <!-- <md-form-field> -->
+            <span class="input-dollar left">
+              <input type="text" class="form-control" name="ETHvalue" [(ngModel)]="data.payOut.ETHValue" disabled>
+            </span>
+            <!-- </md-form-field> -->
+          </div>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="material-icons">monetization_on</i>
+          </span>
+          <div class="form-group label-floating">
+            <label class="control-label">Cash Out Amount</label>
+            <span class="input-dollar left">
+              <input type="number" class="form-control" name="cashAmount" disabled [value]="data.payOut.coins_conduct * data.payOut.ETHValue">
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
+<div md-dialog-actions style="float: right;">
+  <button md-button class="btn btn-rose btn-simple btn-wd btn-lg" (click)="onNoClick()">No Thanks</button>
+  <button md-button class="btn btn-rose btn-simple btn-wd btn-lg" [md-dialog-close]="data.payOut" cdkFocusInitial>Ok</button>
+</div>

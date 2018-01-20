@@ -1,0 +1,200 @@
+<!-- <style>
+.dropdown-menu li > a:hover, 
+.dropdown-menu li > a:focus, 
+.dropdown-menu li > a:active{
+    background-color: #d81b60;
+}
+</style> -->
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" *ngIf="hideContinue">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">mail_outline</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Buy Your Hashpower</h4>
+                        <form #buyHashPower="ngForm" novalidate (ngSubmit)="continuePayment()">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Hashpower</label>
+                                        <input type="number" class="form-control" name="hashPower" required [(ngModel)]="order.hash_amount"> MH/S
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="margin-top: 1.66%;">
+
+                                    <md-select required placeholder="Cryptocurrency" name="currency" [(ngModel)]="order.currencytype">
+                                        <md-option *ngFor="let crypt of cryptocurrency" [value]="crypt.value">{{ crypt.name }}</md-option>
+                                    </md-select>
+
+                                </div>
+                                <div class="col-sm-4" style="margin-top: 1.66%;">
+                                    <md-select placeholder="Locking period" name="lock" [(ngModel)]="order.locked_period">
+                                        <md-option *ngFor="let lock of locks" required [value]="lock.value">{{ lock.name }}</md-option>
+                                    </md-select>
+
+                                </div>
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label">Hash Amount in USD</label>
+                                    <input type="number" [value]="order.hash_amount * 13.33" class="form-control" disabled>
+                            </div>
+                            <br>
+                            <h4 class="card-title">Payment Options</h4>
+                            <label>Please choose your payment option below, e.g., Bitcoin, Credit Card, IMPS</label>
+                            <div class="row">
+                                <div>
+                                    <div class="radio radio-inline" style="margin-top: 0;">
+                                        <label>
+                                            <input type="radio" ng-options="options" [(ngModel)]="paymentType" [value]="'CreditCard'" name="optionsRadios">Credit Card
+                                        </label>
+                                    </div>
+                                    <!-- <div class="radio radio-inline">
+                                        <label>
+                                            <input type="radio" name="optionsRadios">Debit Card
+                                        </label>
+                                    </div> -->
+                                    <div class="radio radio-inline">
+                                        <label>
+                                            <input type="radio" ng-options="options" [(ngModel)]="paymentType" [value]="'IMPS'" name="optionsRadios">IMPS
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-inline">
+                                        <label>
+                                            <input type="radio" ng-options="options" [(ngModel)]="paymentType" [value]="'Bitcoin'" name="optionsRadios">Bitcoin
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-fill btn-rose" [disabled]="!buyHashPower.valid || !order.currencytype || !order.locked_period">Continue</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="continue">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">trending_up</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Promo Code?</h4>
+                        <form method="#" action="#">
+
+                            <div class="form-group label-floating" style="margin-top:-6px;">
+                                <div class="row">
+                                    <div class="col-sm-5" style="padding-top:1%">
+                                        <span>Please enter your promo code in the box on the right</span>
+                                    </div>
+                                    <!-- <div class="col-sm-3"><input type="text" class="form-control" id="usr" style="width:100%;" [value]="coupon" (input)="coupon=$event.target.value" ></div> -->
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="usr" style="width:100%;" name="coupon" [(ngModel)]="order.promo_code">
+                                    </div>
+                                    <div class="col-sm-4" style="margin-top: -14px;">
+                                        <button type="submit" class="btn btn-fill btn-rose" (click)="validate()">Validate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">reorder</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Order Summary</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <b>No.</b>
+                                    </th>
+                                    <th>
+                                        <b>Service</b>
+                                    </th>
+                                    <th>
+                                        <b></b>
+                                    </th>
+                                    <th>
+                                        <b>Amount</b>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{order.hash_amount}} MH/s of {{order.currencyType}} Hashpower(Term: {{ order.locked_period
+                                        }} years) Starting date: {{date | date:'dd/MM/yyyy'}}</td>
+                                    <td></td>
+                                    <td>USD {{order.order_amount |  number : '1.2-2'}}</td>
+                                </tr>
+                                <tr *ngIf="order.discountPercent">
+                                    <th scope="row"></th>
+                                    <td> 
+                                        <button type="submit" class="btn btn-fill btn-rose" (click)="removePromoCode()">Remove Promo Code</button>
+                                    </td>
+                                    <td >
+                                        <b>Discount <span >({{order.discountPercent }}%)</span></b>
+                                    </td>
+                                    <td>
+                                        <b>USD {{order.discount |  number : '1.2-2'}}</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td></td>
+                                    <td>
+                                        <b>Total</b>
+                                    </td>
+                                    <!-- <td *ngIf="hideTotal"><b>USD 1599</b></td> -->
+                                    <td>
+                                        <b>USD {{order.final_amount |  number : '1.2-2'}}</b>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">note_add</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Mining Capacity Share Agreement</h4>
+                        <form method="#" action="#">
+                            <div class="form-group label-floating">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <span>Review and please agree on Mining Capacity Share Agreement to continue.</span>
+                                        <br>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" (click)="check()"> I agree to Terms & Agreement
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" style="margin-top: -5px">
+                                        <button type="submit" class="btn btn-fill btn-rose" (click)="showSwal('title-and-text')">View Agreement</button>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8"></div>
+                    <div class="col-sm-4" style="margin-left:82.6%">
+                        <button type="submit" class="btn btn-fill btn-rose" (click)="placeOrder()" [disabled]="disable">Confirm Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

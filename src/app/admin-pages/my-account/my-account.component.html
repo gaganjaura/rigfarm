@@ -1,0 +1,153 @@
+<div class="loader" *ngIf="load">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+        </svg>
+    </div>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="exTab1" class="container">
+            </div>
+            <div class="card">
+                <div class="col-md-12">
+                    <div class="card-content">
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                <a href="#1a" data-toggle="tab">General Information</a>
+                            </li>
+                            <li>
+                                <a href="#2a" data-toggle="tab">Change Password</a>
+                            </li>
+                            <li>
+                                <a href="#3a" data-toggle="tab">Wallet</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="1a">
+                                <form #generalInformation="ngForm" novalidate (ngSubmit)="saveAccountsInformation(generalInformation)">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">Email</label>
+                                                <input type="text" class="form-control" name="email" [value]="user.email" [(ngModel)]="user.email"
+                                                required  #email="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+                                                <small [hidden]="email.valid || (email.pristine && !generalInformation.submitted)" class="text-danger">
+                                                    Email is required and format should be <i>john@doe.com</i>.
+                                                  </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">First Name</label>
+                                                <input type="text" class="form-control" name="first_name" [(ngModel)]="user.firstName"
+                                                required  #firstName="ngModel" >
+                                                <small [hidden]="firstName.valid || (firstName.pristine && !generalInformation.submitted)" class="text-danger">
+                                                    First name is required.
+                                                  </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">Last Name</label>
+                                                <input type="text" class="form-control" name="last_name" [(ngModel)]="user.lastName"
+                                                required  #lastName="ngModel" >
+                                                <small [hidden]="lastName.valid || (lastName.pristine && !generalInformation.submitted)" class="text-danger">
+                                                    Last name is required.
+                                                  </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">City</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">Country</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">Postal Code</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <button type="submit" class="btn btn-danger pull-right" [disabled]="!generalInformation.valid">Update Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="2a">
+                                <form #changePassword="ngForm" novalidate (ngSubmit)="saveAccountsInformation(changePassword)">
+                                    <!-- <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">gagandeepjaura@gmail.com</label>
+                                                <input type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">New Password</label>
+                                                <input type="password" class="form-control" name="password" [ngModel]="passwordValue" 
+                                                required validateEqual="confirmPassword" reverse="true" #password="ngModel">
+                                              <small [hidden]="password.valid || (password.pristine && !changePassword.submitted)" class="text-danger">
+                                                Password is required
+                                              </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-black label-floating is-empty">
+                                                <label class="control-label">Confirm Password</label>
+                                                <input type="password" class="form-control" name="confirmPassword" [ngModel]="confirmPasswordValue" 
+                                                required validateEqual="password" reverse="false" #confirmPassword="ngModel">
+                                              <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !changePassword.submitted)" class="text-danger">
+                                                Password mismatch
+                                              </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <button type="submit" class="btn btn-danger pull-right" [disabled]="!changePassword.valid">Change Password</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="3a">
+
+                                <!-- <div class="card-header card-header-icon" data-background-color="red">
+                                <i class="material-icons">account_balance_wallet</i>
+                            </div>                     -->
+                                <div class="card-content">
+                                    <h4 class="card-title">My Wallet</h4>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group form-black label-floating is-empty">
+                                                    <label class="control-label">Enter amount to be added in Wallet</label>
+                                                    <input type="number" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-danger pull-right">Add Money</button>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

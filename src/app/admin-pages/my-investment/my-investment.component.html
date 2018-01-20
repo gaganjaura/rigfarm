@@ -1,0 +1,22 @@
+<div class="main-content">
+    <div class="container-fluid">        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-lg-6" *ngFor="let invest of investments | async" >
+                    <div class="card card-pricing card-raised"  >
+                        <div class="content">
+                            <h6 class="category"> {{getLockingPeriodDifference(invest.order_date,invest.locked_period)}} years Ether Mining Contract</h6>
+                            <div class="icon icon-rose">
+                                <i class="material-icons">content_paste</i>
+                            </div>
+                            <h3 class="card-title">${{invest.final_amount}} / {{invest.hash_amount/1000000}} <small>MH/S</small></h3>
+                            <p class="card-description">
+                                Invested On {{invest.order_date | date:'dd-MM-yyyy'}}
+                            </p>                            
+                        </div>
+                    </div>
+                </div>                
+            </div>                
+        </div>
+    </div>
+</div>
