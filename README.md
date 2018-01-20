@@ -1,6 +1,6 @@
 # rigfarm
 
-<b>Created in Angular4 / Bootstrap / Material Design</b>
+<b>Created in Angular4 / Bootstrap / Material Design / Protractor</b>
 <br>
 
 Follow below steps to run it <br>

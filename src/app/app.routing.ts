@@ -46,30 +46,6 @@ export const AppRoutes: Routes = [
             {
                 path: 'monitor-mining',
                 loadChildren: './admin-pages/monitor-mining/monitor-mining.module#MonitorMiningModule'
-            },
-            {
-                path: 'maps',
-                loadChildren: './maps/maps.module#MapsModule'
-            },
-            {
-                path: 'widgets',
-                loadChildren: './widgets/widgets.module#WidgetsModule'
-            },
-            {
-                path: 'charts',
-                loadChildren: './charts/charts.module#ChartsModule'
-            },
-            {
-                path: 'calendar',
-                loadChildren: './calendar/calendar.module#CalendarModule'
-            },
-            {
-                path: '',
-                loadChildren: './userpage/user.module#UserModule'
-            },
-            {
-                path: '',
-                loadChildren: './timeline/timeline.module#TimelineModule'
             }
         ]
     },
